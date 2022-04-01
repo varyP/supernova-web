@@ -8,13 +8,13 @@ interface HowThisWorksProps {
 const HowThisWorks: FC<HowThisWorksProps> = ({ className }) => {
 	return (
 		<section
-			className={clsx(className, 'w-full bg-gradient-to-r from-indigo-900 to-indigo-400')}
+			className={clsx(className, 'w-full bg-yellow-300')}
 			id="create-instance"
 		>
-			<div className="max-w-7xl mx-auto py-16 px-8 text-white">
-				<h1 className="text-5xl md:text-7xl font-bold">How this works</h1>
-				<p className="mt-4 text-xl">
-					Mint your NFTs now!
+			<div className="max-w-7xl mx-auto py-16 px-8 text-black">
+				<h1 className="text-5xl md:text-5xl font-light">Wen Mint? - Mint Now!</h1>
+				<p className="mt-4 text-xl text-black ">
+					Get some cool furry frens for your metaversal journey! Meowwohmmm!
 				</p>
 			</div>
 		</section>

@@ -15,10 +15,7 @@ const Footer: FC<FooterProps> = ({ className }) => {
 				target='_blank'
 				rel='noopener noreferrer'
 			>
-				All rights reserved by{' Supernova '}
-				<span className='ml-4'>
-					<Image src='/assets/images/supernova-logo.png' alt='supernova logo' width={48} height={48} />
-				</span>
+				❤️<span className="ml-2">by team CFF</span>
 			</a>
 		</footer>
 	);

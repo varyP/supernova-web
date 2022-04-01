@@ -1,14 +1,44 @@
+import { useWallet, useWriteContract } from '@web3-ui/hooks';
 import { FC, useEffect, useState } from 'react';
 import ConnectWallet from '../../components/ConnectWallet';
 import MintTokenForm from './MintTokenForm';
 import TestProjJSON from '../../abis/TestProj.json';
 import { Contract, ethers } from 'ethers';
 
+interface CustomButton {
+	label: string;
+	onClick: (event?: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  };
+  
+  const CustomButton: React.FunctionComponent<CustomButton> = ({formatting = null, label, onClick, enabled = false}) => {
+	
+	return (
+	  <div className="counter-btn" onClick={onClick} disabled={!enabled}>
+		<div className = {formatting ? formatting : "child mt-6 py-2 px-8 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-500 hover:to-red-700 text-white font-bold"}>{label}</div>
+	  </div>
+	)
+  }
+
+
 const MintToken: FC = () => {
 	const MAX_FREE = 10;
 	const CONTRACT_ADDRESS = "0x8331A69ffE5E225d70eBd70D375FF27E6Dc4d3D9"
 	const [proxyContract, setProxyContract] = useState<Contract | null>(null);
 	const [availableFreeMints, setAvailableFreeMints] = useState(0);
+
+	const { connected, connection, connectWallet } = useWallet();
+	const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+		try {
+			if (!connected) {
+				connectWallet();
+			} else {
+				console.log("wallet connected")
+			}
+		} catch (error) {
+			console.log(error)
+		}
+	};
 
 	const handleMintNft = async (isPaid: boolean, mints: string) => {
 		console.log(mints);
@@ -55,7 +85,7 @@ const MintToken: FC = () => {
 			{
 				proxyContract ? (
 					<div className="max-w-7xl mx-auto py-16 px-8 text-black">
-						<h1 className="text-7xl font-bold">Mint an NFT</h1>
+						<h1 className="text-3xl font-extralight">Mint a Fren</h1>
 						<MintTokenForm onSubmit={handleMintNft} freeAvailable={availableFreeMints.toString()} />
 					</div>
 				) : (
@@ -63,9 +93,8 @@ const MintToken: FC = () => {
 						<p className="text-3xl font-bold">
 							Connect wallet to continue.
 						</p>
-						<p className="mt-4 text-3xl font-bold">
-							Please wait for this to be completed.
-						</p>
+						<CustomButton formatting="float-left mt-6 py-3 px-20 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-500 hover:to-red-700 text-white font-bold" 
+				label={"Connect Wallet"} onClick={handleSubmit}/>
 					</div>
 				)
 			}

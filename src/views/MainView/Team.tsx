@@ -34,10 +34,10 @@ export const Team = () => {
 				<div className="mt-4 flex gap-6">
 					<p className="text-black pt-1">We are:</p>
 					<div className="flex gap-2">
-						<TeamButton label="@varun" externalUrl="https://twitter.com/varunparakh" />
+						<TeamButton label="@dev" externalUrl="https://twitter.com/" />
 						<TeamButton
-							label="@vikram"
-							externalUrl="https://twitter.com/bazziinngaaa"
+							label="@dev"
+							externalUrl="https://twitter.com/"
 						/>
 					</div>
 				</div>
