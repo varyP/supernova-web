@@ -33,15 +33,17 @@ const MintToken: FC = () => {
 			if (!connected) {
 				connectWallet();
 			} else {
-				console.log("wallet connected")
+				updateOnConnected();
 			}
 		} catch (error) {
-			console.log(error)
+			if (error) {
+				console.log(error)
+			}
+			
 		}
 	};
 
 	const handleMintNft = async (isPaid: boolean, mints: string) => {
-		console.log(mints);
 		try {
 			// if (!false) throw new Error('Please connect your wallet');
 			var mintPrice = 0;
@@ -58,8 +60,15 @@ const MintToken: FC = () => {
 		}
 	};
 
-	// Replace with useERC721 Proxy Contract
-	useEffect(() => {
+	const handleAccountsChanged = (accounts: Array<string>) => {
+		if (accounts.length != 0 && connected) {
+			updateOnConnected();
+		} else {
+			console.log("No ProxyContract")
+		}
+	}
+
+	const setContract = () => {
 		const provider = new ethers.providers.Web3Provider(window.ethereum);
 		const signer = provider.getSigner();
 		const proxyContract = new ethers.Contract(
@@ -67,23 +76,41 @@ const MintToken: FC = () => {
 			TestProjJSON.abi,
 			signer
 		);
+		setProxyContract(proxyContract);
+	}
 
-		window.ethereum.on("accountsChanged", (accounts) => {
-			console.log("Account changed");
+	const updateOnConnected = () => {
+		if (connected) {
+			setContract();
+		} else {
 			if (proxyContract) {
-				setProxyContract(proxyContract);
-				let totalSupply = proxyContract.totalSupply();
-				totalSupply.then(supply => {
-					setAvailableFreeMints(Math.max(0,MAX_FREE - supply))
-				})
+				setProxyContract()
+			} else {
+				connectWallet();
 			}
-		})
+		}
+	}
+
+	const handleDisconnected = (error) => {
+		setProxyContract();
+	}
+
+	// Replace with useERC721 Proxy Contract
+	useEffect(() => {
+		setContract();
+		window.ethereum.on("accountsChanged", handleAccountsChanged);
+		window.ethereum.on('disconnect', handleDisconnected);
+
+		return () => {
+			window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
+			window.ethereum.removeListener('disconnect', handleDisconnected);
+		}
 	}, []);
 
 	return (
 		<section className="w-full bg-white" id="mint">
 			{
-				proxyContract ? (
+				proxyContract && connected ? (
 					<div className="max-w-7xl mx-auto py-16 px-8 text-black">
 						<h1 className="text-3xl font-extralight">Mint a Fren</h1>
 						<MintTokenForm onSubmit={handleMintNft} freeAvailable={availableFreeMints.toString()} />

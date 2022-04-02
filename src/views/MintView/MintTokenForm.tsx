@@ -49,7 +49,6 @@ const MintTokenForm: FC<MintTokenFormProps> = ({ onSubmit, freeAvailable }) => {
 
 	const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		console.log(event, mintNum);
 		try {
 			if (!mintNum) return;
 			let _mintNum = Number(mintNum);
@@ -59,8 +58,6 @@ const MintTokenForm: FC<MintTokenFormProps> = ({ onSubmit, freeAvailable }) => {
 			setError(error);
 		}
 	};
-	console.log('error', error);
-	console.log('free', freeAvailable);
 
 	const [count, setCount] = React.useState<number>(1);
 	
