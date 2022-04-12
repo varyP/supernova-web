@@ -2,7 +2,7 @@ import { useWallet, useWriteContract } from '@web3-ui/hooks';
 import { FC, useEffect, useState } from 'react';
 import ConnectWallet from '../../components/ConnectWallet';
 import MintTokenForm from './MintTokenForm';
-import TestProjJSON from '../../abis/TestProj.json';
+import CFF from '../../abis/TestProj.json';
 import { Contract, ethers } from 'ethers';
 
 interface CustomButton {
@@ -61,37 +61,54 @@ const MintToken: FC = () => {
 		}
 	};
 
+	const handleWindowLoad = () => {
+		console.log("handleWindowLoad");
+		if (typeof window.ethereum !== 'undefined') {
+			console.log('web3 is enabled')
+			setWeb3Enabled(true);
+			setContract(true);
+			window.ethereum.on("accountsChanged", handleAccountsChanged);
+			window.ethereum.on('disconnect', handleDisconnected);
+		} else {
+			console.log('web3 is not found')
+			setWeb3Enabled(true);
+		}
+	}
 	const handleAccountsChanged = (accounts: Array<string>) => {
+		console.log("accountsChanged");
 		if (accounts.length != 0 && connected) {
 			updateOnConnected();
 		} else {
-			console.log("No ProxyContract")
+			console.log("No Contract")
 		}
 	}
 
-	const setContract = () => {
-		if (isWeb3Enabled) {
+	const setContract = (enabled: Boolean) => {
+		if (enabled) {
+			console.log("setting contract");
 			let provider;
-		window.ethereum.request({ method: 'eth_requestAccounts' }).then(provider = new ethers.providers.Web3Provider(window.ethereum));
-		// const provider = new ethers.providers.Web3Provider(window.ethereum);
-		const signer = provider.getSigner();
-		const proxyContract = new ethers.Contract(
-			CONTRACT_ADDRESS,
-			TestProjJSON.abi,
-			signer
-		);
-		setProxyContract(proxyContract);
+			window.ethereum.request({ method: 'eth_requestAccounts' }).then(provider = new ethers.providers.Web3Provider(window.ethereum))
+			.catch( error =>  console.log(error) );
+			// const provider = new ethers.providers.Web3Provider(window.ethereum);
+			const signer = provider.getSigner();
+			const proxyContract = new ethers.Contract(
+				CONTRACT_ADDRESS,
+				CFF.abi,
+				signer
+			);
+			setProxyContract(proxyContract);
 		} else {
+			console.log("unable to set contract - web3 not enabled");
 			setProxyContract(null);
 		}
 	}
 
 	const updateOnConnected = () => {
 		if (connected) {
-			setContract();
+			setContract(isWeb3Enabled);
 		} else {
 			if (proxyContract) {
-				setProxyContract()
+				setProxyContract(null);
 			} else {
 				connectWallet();
 			}
@@ -99,33 +116,20 @@ const MintToken: FC = () => {
 	}
 
 	const handleDisconnected = (error) => {
-		setProxyContract();
+		console.log("handleDisconnected");
+		setProxyContract(null);
 	}
 
 	// Replace with useERC721 Proxy Contract
 	useEffect(() => {
-
-		window.addEventListener('load', function() {
-			if (typeof web3 !== 'undefined') {
-			  console.log('web3 is enabled')
-			  setWeb3Enabled(true);
-			  if (web3.currentProvider.isMetaMask === true) {
-				console.log('MetaMask is active')
-			  } else {
-				console.log('MetaMask is not available')
-			  }
-			} else {
-			  console.log('web3 is not found')
-			  setWeb3Enabled(true);
-			}
-		  })
-
-		  if (isWeb3Enabled) {
-			setContract();
-			window.ethereum.on("accountsChanged", handleAccountsChanged);
-			window.ethereum.on('disconnect', handleDisconnected);
-		  }
-
+		handleWindowLoad();
+		if (isWeb3Enabled) {
+		setContract(isWeb3Enabled);
+		window.ethereum.on("accountsChanged", handleAccountsChanged);
+		window.ethereum.on('disconnect', handleDisconnected);
+		} else {
+			console.log("on load -- web3 not enabled");
+		}
 		return () => {
 			if (isWeb3Enabled) {
 				window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
