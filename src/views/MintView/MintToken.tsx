@@ -34,7 +34,7 @@ const MintToken: FC = () => {
 			if (!connected) {
 				connectWallet();
 			} else {
-				updateOnConnected();
+				updateOnConnected(true);
 			}
 		} catch (error) {
 			if (error) {
@@ -71,15 +71,16 @@ const MintToken: FC = () => {
 			window.ethereum.on('disconnect', handleDisconnected);
 		} else {
 			console.log('web3 is not found')
-			setWeb3Enabled(true);
+			setWeb3Enabled(false);
 		}
 	}
 	const handleAccountsChanged = (accounts: Array<string>) => {
-		console.log("accountsChanged");
-		if (accounts.length != 0 && connected) {
-			updateOnConnected();
+		console.log("accountsChanged", accounts.length, connected);
+		if (accounts.length != 0 || connected) {
+			updateOnConnected(true);
 		} else {
 			console.log("No Contract")
+			setProxyContract(null);
 		}
 	}
 
@@ -103,10 +104,13 @@ const MintToken: FC = () => {
 		}
 	}
 
-	const updateOnConnected = () => {
-		if (connected) {
-			setContract(isWeb3Enabled);
+	const updateOnConnected = (isConnected: Boolean) => {
+		console.log("updateOnConnected")
+		if (isConnected) {
+			console.log("updateOnConnected: settingContract: ", isWeb3Enabled);
+			setContract(true);
 		} else {
+			console.log("updateOnConnected: notConnected: ", isWeb3Enabled, proxyContract);
 			if (proxyContract) {
 				setProxyContract(null);
 			} else {
@@ -123,21 +127,18 @@ const MintToken: FC = () => {
 	// Replace with useERC721 Proxy Contract
 	useEffect(() => {
 		handleWindowLoad();
-		if (isWeb3Enabled) {
-		setContract(isWeb3Enabled);
-		window.ethereum.on("accountsChanged", handleAccountsChanged);
-		window.ethereum.on('disconnect', handleDisconnected);
-		} else {
-			console.log("on load -- web3 not enabled");
-		}
 		return () => {
-			if (isWeb3Enabled) {
+			if (typeof window.ethereum !== 'undefined') {
+				console.log("removing listeners");
 				window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
 				window.ethereum.removeListener('disconnect', handleDisconnected);
+			} else {
+				console.log("web3 not enabled - unable to remove Listeners")
 			}
 		}
 	}, []);
 
+	console.log(isWeb3Enabled, connected);
 	return (
 		<section className="w-full bg-white" id="mint">
 			{
