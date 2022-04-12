@@ -25,6 +25,7 @@ const MintToken: FC = () => {
 	const CONTRACT_ADDRESS = "0x8331A69ffE5E225d70eBd70D375FF27E6Dc4d3D9"
 	const [proxyContract, setProxyContract] = useState<Contract | null>(null);
 	const [availableFreeMints, setAvailableFreeMints] = useState(0);
+	const [isWeb3Enabled, setWeb3Enabled] = useState(false);
 
 	const { connected, connection, connectWallet } = useWallet();
 	const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -69,7 +70,10 @@ const MintToken: FC = () => {
 	}
 
 	const setContract = () => {
-		const provider = new ethers.providers.Web3Provider(window.ethereum);
+		if (isWeb3Enabled) {
+			let provider;
+		window.ethereum.request({ method: 'eth_requestAccounts' }).then(provider = new ethers.providers.Web3Provider(window.ethereum));
+		// const provider = new ethers.providers.Web3Provider(window.ethereum);
 		const signer = provider.getSigner();
 		const proxyContract = new ethers.Contract(
 			CONTRACT_ADDRESS,
@@ -77,6 +81,9 @@ const MintToken: FC = () => {
 			signer
 		);
 		setProxyContract(proxyContract);
+		} else {
+			setProxyContract(null);
+		}
 	}
 
 	const updateOnConnected = () => {
@@ -97,13 +104,33 @@ const MintToken: FC = () => {
 
 	// Replace with useERC721 Proxy Contract
 	useEffect(() => {
-		setContract();
-		window.ethereum.on("accountsChanged", handleAccountsChanged);
-		window.ethereum.on('disconnect', handleDisconnected);
+
+		window.addEventListener('load', function() {
+			if (typeof web3 !== 'undefined') {
+			  console.log('web3 is enabled')
+			  setWeb3Enabled(true);
+			  if (web3.currentProvider.isMetaMask === true) {
+				console.log('MetaMask is active')
+			  } else {
+				console.log('MetaMask is not available')
+			  }
+			} else {
+			  console.log('web3 is not found')
+			  setWeb3Enabled(true);
+			}
+		  })
+
+		  if (isWeb3Enabled) {
+			setContract();
+			window.ethereum.on("accountsChanged", handleAccountsChanged);
+			window.ethereum.on('disconnect', handleDisconnected);
+		  }
 
 		return () => {
-			window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
-			window.ethereum.removeListener('disconnect', handleDisconnected);
+			if (isWeb3Enabled) {
+				window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
+				window.ethereum.removeListener('disconnect', handleDisconnected);
+			}
 		}
 	}, []);
 
