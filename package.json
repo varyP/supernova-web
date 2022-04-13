@@ -40,6 +40,8 @@
 		"autoprefixer": "^10.4.2",
 		"eslint": "8.9.0",
 		"eslint-config-next": "12.1.0",
+		"keccak256": "1.0.6",
+		"merkletreejs": "0.2.31",
 		"postcss": "^8.4.7",
 		"tailwindcss": "^3.0.23",
 		"typechain": "^7.0.0",

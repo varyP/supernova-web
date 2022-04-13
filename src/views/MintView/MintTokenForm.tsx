@@ -2,8 +2,9 @@ import React, { FC, FormEvent, useState, MouseEvent } from 'react';
 import { CustomButton, CounterDisplay } from './Buttons';
 
 interface MintTokenFormProps {
-	onSubmit: (isPaid: boolean, mints: string) => void;
+	onSubmit: (isPaid: boolean, mints: string, merkleProof: bytes32[]) => void;
 	freeAvailable: string;
+	merkleProof: bytes32[];
 }
 
 interface CustomButton {
@@ -11,10 +12,13 @@ interface CustomButton {
 	onClick: (event?: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
   };
   
-  const CustomButton: React.FunctionComponent<CustomButton> = ({formatting = null, label, onClick, enabled = false}) => {
+  const CustomButton: React.FunctionComponent<CustomButton> = ({formatting = null, label, onClick, enabled = true}) => {
 	
 	return (
-	  <div className="counter-btn" onClick={onClick} disabled={!enabled}>
+		<section>
+			{console.log("enabled -- -", enabled)}
+		</section>,
+	  <div className="counter-btn" onClick={enabled ? onClick: ()=>{}}>
 		<div className = {formatting ? formatting : "child mt-6 py-2 px-8 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-500 hover:to-red-700 text-white font-bold"}>{label}</div>
 	  </div>
 	)
@@ -30,7 +34,7 @@ interface CustomButton {
 	);
   }
 
-const MintTokenForm: FC<MintTokenFormProps> = ({ onSubmit, freeAvailable }) => {
+const MintTokenForm: FC<MintTokenFormProps> = ({ onSubmit, freeAvailable, merkleProof }) => {
 	const [mintNum, setMints] = useState('0');
 	const [freeMints, setFreeMints] = useState('0');
 	const [error, setError] = useState<Error | null>(null);
@@ -41,7 +45,7 @@ const MintTokenForm: FC<MintTokenFormProps> = ({ onSubmit, freeAvailable }) => {
 			if (!mintNum) return;
 			let _mintNum = Number(mintNum);
 			if (typeof _mintNum !== 'number') throw new Error('Mint Amount is not a valid number.');
-			onSubmit(false,mintNum);
+			onSubmit(false,mintNum, merkleProof);
 		} catch (error) {
 			setError(error);
 		}
@@ -95,12 +99,22 @@ const MintTokenForm: FC<MintTokenFormProps> = ({ onSubmit, freeAvailable }) => {
 						</div>
 					</div>
 				</div>
+				
+					{ merkleProof.length != 0 ?
 				<div className="flex gap-4">
-				<CustomButton formatting="float-left mt-6 py-3 px-20 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-500 hover:to-red-700 text-white font-bold" 
-				label={"Free Mint"} onClick={handleFree} enabled={freeAvailable == 10}/>
-				<CustomButton formatting="float-left mt-6 py-3 px-20 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-500 hover:to-red-700 text-white font-bold" 
-				label={"Mint"} onClick={handleSubmit}/>
-				</div>
+					<CustomButton formatting="float-left mt-6 py-3 px-20 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-500 hover:to-red-700 text-white font-bold" 
+					label={"WL Mint"} onClick={handleFree} enabled={true}/>
+					<CustomButton formatting="float-left mt-6 py-3 px-20 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-500 hover:to-red-700 text-white font-bold" 
+					label={"Mint"} onClick={handleSubmit}/>
+				</div> 
+				:
+				<div className="flex gap-4">
+					<CustomButton formatting="float-left mt-6 py-3 px-20 rounded-lg bg-gradient-to-r from-orange-100 to-red-100 hover:from-red-100 hover:to-red-200 text-white font-bold" 
+					label={"WL Mint"} onClick={handleFree} enabled={false}/>
+					<CustomButton formatting="float-left mt-6 py-3 px-20 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-500 hover:to-red-700 text-white font-bold" 
+					label={"Mint"} onClick={handleSubmit}/>
+				</div> 
+					}
 			</form>
 		</div>
 	);
