@@ -46,7 +46,7 @@ const TopBar: FC<TopBarProps> = ({ className }) => {
 						<Link href="/">
 							<a>
 								<Disclosure.Button className="font-bold text-gray-700 hover:text-gray-500">
-									home
+									Home
 								</Disclosure.Button>
 							</a>
 						</Link>
@@ -57,22 +57,15 @@ const TopBar: FC<TopBarProps> = ({ className }) => {
 								</Disclosure.Button>
 							</a>
 						</Link>
-						<Link href="/#team">
-							<a>
-								<Disclosure.Button className="font-bold text-gray-700 hover:text-gray-500">
-									team
-								</Disclosure.Button>
-							</a>
-						</Link>
 						<Link href="/#faq">
 							<a>
 								<Disclosure.Button className="font-bold text-gray-700 hover:text-gray-500">
-									faq
+									FAQ
 								</Disclosure.Button>
 							</a>
 						</Link>
 						<div>
-							{/* <Wallet ens={address} userAddress={address} /> */}
+							{/* { <Wallet ens={address} userAddress={address} /> } */}
 						</div>
 					</div>
 				</Disclosure.Panel>

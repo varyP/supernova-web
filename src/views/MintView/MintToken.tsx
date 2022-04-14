@@ -15,7 +15,7 @@ interface CustomButton {
   const CustomButton: React.FunctionComponent<CustomButton> = ({formatting = null, label, onClick, enabled = false}) => {
 	
 	return (
-	  <div className="counter-btn" onClick={onClick} disabled={!enabled}>
+		<div className="counter-btn" onClick={enabled ? onClick: ()=>{}}>
 		<div className = {formatting ? formatting : "child mt-6 py-2 px-8 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-500 hover:to-red-700 text-white font-bold"}>{label}</div>
 	  </div>
 	)

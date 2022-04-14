@@ -7,29 +7,28 @@ export const Faq = () => {
 					<b className="text-white font-extrabold"><span className="font-medium text-yellow-500">Q: </span>Why stealth launch?</b>
 					<p className="text-white font-medium">
 						<span className="font-medium  text-yellow-500">A: </span>
-						We are devs & building is what we excel at, community building will be part of our focus going forward.
+						We are devs & building is what we excel at, more to come.
 					</p>
 				</div>
 				<div className="mt-8">
 					<b className="text-white font-extrabold"><span className="font-medium text-yellow-500">Q: </span>Another derivative, seriously?</b>
 					<p className="text-white font-medium">
-						<span className="font-medium  text-yellow-500">A: </span>Well yes & no! 
-						Instead of creating the classic card style mint pass, we decided to create a derivative because why not!!
-					</p>
-				</div>
-				<div className="mt-8">
-					<b className="text-white font-extrabold"><span className="font-medium text-yellow-500">Q: </span>Alright, mint pass for what?</b>
-					<p className="text-white font-medium">
-						<span className="font-medium  text-yellow-500">A: </span>
-						🤫 Under-promise, over deliver!
+						<span className="font-medium  text-yellow-500">A: </span>Well yeah!!
+						We love those damn 👽 Frens & Cool 🐱 members & what they've done for the ecosystem, but heck there's more to come! Sssh...
 					</p>
 				</div>
 				<div className="mt-8">
 					<b className="text-white font-extrabold"><span className="font-medium text-yellow-500">Q: </span>Who's behind this rug?</b>
 					<p className="text-white font-medium">
 						<span className="font-medium  text-yellow-500">A: </span>
-						Wait rug? Haha! Give it some time & you'll know :) </p>
-						<p className="mt-4 text-white font-medium">For now - look at this as a <span className="font-extrabold">degen</span> mint is what we'll say.
+						Wait rug? Noo! Haha. Give it some time & you'll know. Until then flip it to win it :) </p>
+				</div>
+				<div className="mt-8">
+					<b className="text-white font-extrabold"><span className="font-medium text-yellow-500">Q: </span>Well all this sounds too vague!</b>
+					<p className="text-white font-medium">
+						<span className="font-medium  text-yellow-500">A: </span>
+						We know how the ecosystem works, we intend to make no promises now & deliver what hits the pulse! </p>
+						<p className="mt-4 text-white font-medium"><span className="font-extrabold">DEGEN</span> AWAYYY.
 					</p>
 				</div>
 			</div>

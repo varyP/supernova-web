@@ -4,6 +4,7 @@ import Image from 'next/image';
 interface TopLinkProps {
 	href: string;
 	text: string;
+	formatting: string;
 }
 
 interface TopLinkImageProps {
@@ -11,10 +12,10 @@ interface TopLinkImageProps {
 	image: string;
 }
 
-const TopLink = ({ href, text }: TopLinkProps) => (
+const TopLink = ({ href, text, formatting }: TopLinkProps) => (
 	<Link href={href}>
 		<a>
-			<button type="button" className="font-bold text-gray-700 hover:text-gray-500">
+			<button type="button" className= {formatting ? formatting : "font-bold text-gray-700 hover:text-gray-500"}>
 				{text}
 			</button>
 		</a>
