@@ -3,7 +3,7 @@ import TopLinks from './../../layouts/TopBar/TopLink';
 export const Intro = () => {
 	return (
 		<section className="w-full bg-yellow-300 h-[36rem]" id="cff">
-			<div className="max-w-7xl mx-auto w-full mt-24 py-16 px-8">
+			<div className="max-w-7xl mx-auto w-full mt-24 py-8 px-8">
 				<h1 className="text-2xl sm:text-[6rem] text-black font-bold">Cool Furry Frens</h1>
 			</div>
 			<div className="max-w-7xl mx-auto w-full pb-16 px-8 space-y-8">

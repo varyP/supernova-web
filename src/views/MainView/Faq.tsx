@@ -14,7 +14,7 @@ export const Faq = () => {
 					<b className="text-white font-extrabold"><span className="font-medium text-yellow-500">Q: </span>Another derivative, seriously?</b>
 					<p className="text-white font-medium">
 						<span className="font-medium  text-yellow-500">A: </span>Well yeah!!
-						We love those damn 👽 Frens & Cool 🐱 members & what they've done for the ecosystem, but heck there's more to come! Sssh...
+						We love those damn 👽 Frens & Cool 🐱 and what they've done for the ecosystem, but heck there's more to come! Sssh...
 					</p>
 				</div>
 				<div className="mt-8">
@@ -27,7 +27,7 @@ export const Faq = () => {
 					<b className="text-white font-extrabold"><span className="font-medium text-yellow-500">Q: </span>Well all this sounds too vague!</b>
 					<p className="text-white font-medium">
 						<span className="font-medium  text-yellow-500">A: </span>
-						We know how the ecosystem works, we intend to make no promises now & deliver what hits the pulse! </p>
+						We intend to make no promises now & deliver what hits the pulse! </p>
 						<p className="mt-4 text-white font-medium"><span className="font-extrabold">DEGEN</span> AWAYYY.
 					</p>
 				</div>
