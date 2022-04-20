@@ -17,11 +17,19 @@ export const Intro = () => {
 						</span>
 					</li>
 					<li>
+						<span className="mr-2" role="img" aria-label="eyes">
+							👀
+						</span>{' '}
+						<span className="text-blue font-medium">
+							reveal right after mint out
+						</span>
+					</li>
+					<li>
 						<span className="mr-2" role="img" aria-label="moon">
 						🌗
 						</span>{' '}
 						<span className="text-blue font-medium">
-						always puff puff pass & mint mint moon!
+						remember to puff puff pass!
 						</span>
 					</li>
 					<li>
@@ -29,20 +37,12 @@ export const Intro = () => {
 							🤘
 						</span>{' '}
 						<span className="text-blue font-medium">
-							mint more, pay less! -- super low gas per mint! Thanks to ERC-721A.
-						</span>
-					</li>
-					<li>
-						<span className="mr-2" role="img" aria-label="eyes">
-							👀
-						</span>{' '}
-						<span className="text-blue font-medium">
-							reveal right after mint out!
+							mint more, pay less -- super low gas per mint! Thanks to ERC-721A.
 						</span>
 					</li>
 					<li></li>
 					<div className="max-w-7xl mx-auto py-8 text-black">
-						<p className="text-3xl font-bold">
+						<p className="text-3xl font-semibold">
 							Happy minting mofo!
 						</p>
 						<CustomButton formatting="float-left mt-6 py-3 px-20 rounded-lg bg-gradient-to-r from-yellow-500 to-green-500 hover:from-red-500 hover:to-yellow-400 text-white font-bold" 
