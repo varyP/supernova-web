@@ -29,8 +29,8 @@ const MintToken: FC = () => {
 	const WL_MINT_PRICE = 0;
 	const PUBLIC_MINT_PRICE = 0.0069;
 	
-	const CHAIN_ID = 4;
-	const CONTRACT_ADDRESS = "0x788c87ff1af664163a76d9e61d25588717d461c0"
+	const CHAIN_ID = 1;
+	const CONTRACT_ADDRESS = "0xd735f8fca417c08ee8d241b1ae9b5ab0778576b2"
 	
 	const [nftContract, setNFTContract] = useState<Contract | null>(null);
 	const [availableFreeMints, setAvailableFreeMints] = useState(0);
