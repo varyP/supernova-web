@@ -19,7 +19,7 @@ const TopBar: FC<TopBarProps> = ({ className }) => {
 			<Disclosure>
 				<div className="px-8 flex-1 flex justify-between items-center">
 					<div className="py-4 text-4xl text-black font-extrabold">
-						<Link href="/">Stoner Moon</Link>
+						<Link href="/">Stoner Moon 🦉</Link>
 					</div>
 					{/* Desktop Header Items + Connect Wallet button */}
 					<div className="hidden md:flex items-center gap-8 xl:gap-16 text-xl">

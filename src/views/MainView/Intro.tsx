@@ -4,9 +4,9 @@ export const Intro = () => {
 	return (
 		<section className="w-full bg-green-600 h-[42rem]" id="cff">
 			<div className="max-w-7xl mx-auto w-full mt-24 py-2 px-8">
-				<h1 className="text-4xl md:text-5xl lg:text-3xl xl:text-2xl sm:text-[6rem] text-black font-bold">Stoner Moon</h1>
+				<h1 className="text-3xl md:text-4xl lg:text-2xl xl:text-2xl sm:text-[6rem] text-black font-bold">Let the birds fly high!</h1>
 			</div>
-			<div className="max-w-7xl mx-auto w-full pb-16 px-8 py-16 space-y-8">
+			<div className="max-w-7xl mx-auto w-full pb-16 px-8 py-8 space-y-8">
 				<ol className="space-y-2 text-lg">
 					<li>
 						<span className="mr-2 text-white" role="img" aria-label="owl">
@@ -37,7 +37,15 @@ export const Intro = () => {
 							🤘
 						</span>{' '}
 						<span className="text-blue font-medium">
-							mint more, pay less -- super low gas per mint! Thanks to ERC-721A.
+							super low gas per mint! Thanks to ERC-721A.
+						</span>
+					</li>
+					<li>
+						<span className="mr-2" role="img" aria-label="eyes">
+							😵‍💫
+						</span>{' '}
+						<span className="text-blue font-medium">
+							a special day 4/20 x Moon Birds project by the community!
 						</span>
 					</li>
 					<li></li>
