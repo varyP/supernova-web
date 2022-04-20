@@ -9,8 +9,8 @@ interface HeadTagsProps {
 const HeadTags: FC<HeadTagsProps> = ({ title, description }) => {
 	return (
 		<Head>
-			<title>{title ?? 'Supernova'}</title>
-			<meta name='description' content={description ?? 'Presenting Supernova'} />
+			<title>{title ?? 'Stoner Birds'}</title>
+			<meta name='description' content={description ?? 'Presenting SMB'} />
 			<link rel='icon' href='/favicon.ico' />
 		</Head>
 	);
