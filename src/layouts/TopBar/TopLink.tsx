@@ -15,7 +15,7 @@ interface TopLinkImageProps {
 const TopLink = ({ href, text, formatting }: TopLinkProps) => (
 	<Link href={href}>
 		<a>
-			<button type="button" className= {formatting ? formatting : "font-bold text-gray-700 hover:text-gray-500"}>
+			<button type="button" className= {formatting ? formatting : "font-bold text-black-700 hover:text-gray-500"}>
 				{text}
 			</button>
 		</a>

@@ -2,26 +2,26 @@ import TopLinks from './../../layouts/TopBar/TopLink';
 
 export const Intro = () => {
 	return (
-		<section className="w-full bg-yellow-300 h-[36rem]" id="cff">
+		<section className="w-full bg-green-600 h-[42rem]" id="cff">
 			<div className="max-w-7xl mx-auto w-full mt-24 py-2 px-8">
-				<h1 className="text-2xl sm:text-[6rem] text-black font-bold">Cool Furry Frens</h1>
+				<h1 className="text-4xl md:text-5xl lg:text-3xl xl:text-2xl sm:text-[6rem] text-black font-bold">Stoner Moon</h1>
 			</div>
 			<div className="max-w-7xl mx-auto w-full pb-16 px-8 py-16 space-y-8">
 				<ol className="space-y-2 text-lg">
 					<li>
-						<span className="mr-2 text-white" role="img" aria-label="dna">
-						🪐
+						<span className="mr-2 text-white" role="img" aria-label="owl">
+						🦉
 						</span>{' '}
 						<span className="text-blue font-medium">
-						<span className="text-blue-400 font-extrabold"> 6969 </span> cool 👽 met some 🐱 frens in the metaversal galaxy
+						<span className="text-yellow-400 font-extrabold"> 4200 </span> Stoner Moon Birds to celebrate 4 / 20
 						</span>
 					</li>
 					<li>
-						<span className="mr-2" role="img" aria-label="water-wave">
-						🎫
+						<span className="mr-2" role="img" aria-label="moon">
+						🌗
 						</span>{' '}
 						<span className="text-blue font-medium">
-							hodl or trade your cool frens & be prepared for something special
+						always puff puff pass & mint mint moon!
 						</span>
 					</li>
 					<li>
@@ -29,7 +29,15 @@ export const Intro = () => {
 							🤘
 						</span>{' '}
 						<span className="text-blue font-medium">
-							mint more, pay less! -- super low gas per mint!
+							mint more, pay less! -- super low gas per mint! Thanks to ERC-721A.
+						</span>
+					</li>
+					<li>
+						<span className="mr-2" role="img" aria-label="eyes">
+							👀
+						</span>{' '}
+						<span className="text-blue font-medium">
+							reveal right after mint out!
 						</span>
 					</li>
 					<li></li>
@@ -37,8 +45,8 @@ export const Intro = () => {
 						<p className="text-3xl font-bold">
 							Happy minting mofo!
 						</p>
-						<CustomButton formatting="float-left mt-6 py-3 px-20 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-500 hover:to-red-700 text-white font-bold" 
-				label={"Let me in"} onClick={mintNow}/>
+						<CustomButton formatting="float-left mt-6 py-3 px-20 rounded-lg bg-gradient-to-r from-yellow-500 to-green-500 hover:from-red-500 hover:to-yellow-400 text-white font-bold" 
+				label={"Aight light me a J"} onClick={mintNow}/>
 					</div>
 				</ol>
 			</div>
@@ -56,7 +64,7 @@ interface CustomButton {
 	
 	return (
 		<div className="counter-btn" onClick={enabled ? onClick: ()=>{}}>
-		<TopLinks.TopLink formatting = "child mt-6 py-2 px-20 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-500 hover:to-red-700 text-white font-bold" href="/mint" text="Let me in!" />
+		<TopLinks.TopLink formatting = {formatting} href="/mint" text={label} />
 		</div>
 	)
   }

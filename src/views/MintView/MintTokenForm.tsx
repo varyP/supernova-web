@@ -12,8 +12,8 @@ interface CustomButton {
 	formatting: string;
 	enabled: Boolean;
   };
-  
-  const defaultButtonFormatting = "child mt-6 py-2 px-8 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-500 hover:to-red-700 text-white font-bold";
+  //float-left mt-6 py-3 px-20 rounded-lg bg-gradient-to-r from-yellow-500 to-green-500 hover:from-red-500 hover:to-yellow-400 text-white font-bold
+  const defaultButtonFormatting = "child mt-6 py-2 px-8 rounded-lg bg-gradient-to-r from-yellow-500 to-green-500 hover:from-red-500 hover:to-yellow-400 text-white font-bold";
   const CustomButton: React.FunctionComponent<CustomButton> = ({label, onTap, formatting = null, enabled = true}) => {
 	formatting = formatting || defaultButtonFormatting;
 	let callback = enabled ? onTap : (event: React.MouseEvent<HTMLElement>) => {};
@@ -90,7 +90,7 @@ const MintTokenForm: FC<MintTokenFormProps> = ({ onSubmit, freeAvailable, merkle
 			<form className="">
 				<div className="flex gap-4 mt-4">
 					<div className="flex flex-col gap-4">
-						<label htmlFor="mints">Free Mints Remaining: {freeAvailable}</label>
+						<label htmlFor="mints">First 420 are free 💨 and Max 4 free per txn!</label>
 						<div className="flex ... gap-20 text-xl">
 						<div className="flex-1 ..."><CustomButton label={"-"} onTap={dec} formatting= {defaultButtonFormatting} enabled= {true}/></div>
 						<div className="contents">
@@ -102,21 +102,21 @@ const MintTokenForm: FC<MintTokenFormProps> = ({ onSubmit, freeAvailable, merkle
 					</div>
 				</div>
 				
-					{ merkleProof.length != 0 ?
+					{/* { merkleProof.length != 0 ? */}
 				<div className="flex gap-4">
-					<CustomButton formatting="float-left mt-6 py-3 px-20 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-500 hover:to-red-700 text-white font-bold" 
-					label={"Mint"} onTap={handleSubmit} enabled= {true}/>
-					<CustomButton formatting="float-left mt-6 py-3 px-20 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-500 hover:to-red-700 text-white font-bold" 
-					label={"1 Free WL Mint"} onTap={handleFree} enabled={true}/>
+					<CustomButton formatting="float-left mt-6 py-3 px-20 rounded-lg bg-gradient-to-r from-yellow-500 to-green-500 hover:from-red-500 hover:to-yellow-400 text-white font-bold" 
+					label={"Mint ☘️"} onTap={handleSubmit} enabled= {true}/>
+					{/* <CustomButton formatting="float-left mt-6 py-3 px-20 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-500 hover:to-red-700 text-white font-bold" 
+					label={"1 Free WL Mint"} onTap={handleFree} enabled={true}/> */}
 				</div> 
-				:
-				<div className="flex gap-4">
+				{/* : */}
+				{/* <div className="flex gap-4">
 					<CustomButton formatting="float-left mt-6 py-3 px-20 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-500 hover:to-red-700 text-white font-bold" 
 					label={"Mint"} onTap={handleSubmit} enabled= {true}/>
 					<CustomButton formatting="float-left mt-6 py-3 px-20 rounded-lg bg-gradient-to-r from-orange-100 to-red-100 hover:from-red-100 hover:to-red-200 text-white font-bold" 
 					label={"1 Free WL Mint"} onTap={handleFree} enabled={false}/>
-				</div> 
-					}
+				</div>  */}
+					{/* } */}
 			</form>
 		</div>
 	);

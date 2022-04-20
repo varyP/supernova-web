@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Intro } from './Intro';
-import { Faq } from './Faq';
+// import { Faq } from './Faq';
 // import { Team } from './Team';
 
 interface MainViewProps {
@@ -11,7 +11,7 @@ const MainView: FC<MainViewProps> = ({ className }) => {
 	return (
 		<>
 			<Intro />
-			<Faq />
+			{/* <Faq /> */}
 		</>
 	);
 };

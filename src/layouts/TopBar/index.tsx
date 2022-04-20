@@ -15,21 +15,20 @@ const TopBar: FC<TopBarProps> = ({ className }) => {
 	// const { address } = useEthereum();
 
 	return (
-		<div className={clsx(className, 'sticky top-0 w-full flex flex-col bg-yellow-300')}>
+		<div className={clsx(className, 'sticky top-0 w-full flex flex-col bg-green-600')}>
 			<Disclosure>
 				<div className="px-8 flex-1 flex justify-between items-center">
 					<div className="py-4 text-4xl text-black font-extrabold">
-						<Link href="/">Cool Furry Frens</Link>
+						<Link href="/">Stoner Moon</Link>
 					</div>
 					{/* Desktop Header Items + Connect Wallet button */}
 					<div className="hidden md:flex items-center gap-8 xl:gap-16 text-xl">
-						<TopLinks.TopLink href="/mint" text="Mint" />
-						<TopLinks.TopLink href="/#faq" text="FAQ" />
+						<TopLinks.TopLink href="/mint" text="Mint ☘️" />
+						{/* <TopLinks.TopLink href="/#faq" text="FAQ" /> */}
 					</div>
 					<div className="hidden md:flex items-center gap-8 xl:gap-16 text-xl">
 						<TopLinks.TopLinkImage href="https://twitter.com/cryptorun0" image="twitter_button" />
 						<TopLinks.TopLinkImage href="https://opensea.io" image="opensea" />
-						<TopLinks.TopLinkImage href="https://discord.gg" image="discord_button" />
 					</div>
 					<div className="hidden md:flex">
 						{/* <Wallet ens={address} userAddress={address} /> */}
@@ -57,20 +56,20 @@ const TopBar: FC<TopBarProps> = ({ className }) => {
 								</Disclosure.Button>
 							</a>
 						</Link>
-						<Link href="/#faq">
+						{/* <Link href="/#faq">
 							<a>
 								<Disclosure.Button className="font-bold text-gray-700 hover:text-gray-500">
 									FAQ
 								</Disclosure.Button>
 							</a>
-						</Link>
+						</Link> */}
 						<div>
 							{/* { <Wallet ens={address} userAddress={address} /> } */}
 						</div>
 					</div>
 				</Disclosure.Panel>
 			</Disclosure>
-			<div className="h-2 bg-gradient-to-r from-blue-400 via-yellow-100 to-yellow-300" />
+			<div className="h-2 bg-gradient-to-r from-yellow-200 via-green-400 to-green-700" />
 		</div>
 	);
 };

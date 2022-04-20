@@ -7,6 +7,10 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
+		"start-react": "react-scripts start",
+		"build-react": "react-scripts build",
+		"test-react": "react-scripts test",
+		"eject-react": "react-scripts eject",
 		"typechain": "typechain --target=ethers-v5 src/abis/**/*.json --out-dir=src/types/contracts"
 	},
 	"dependencies": {
@@ -27,7 +31,9 @@
 		"next": "12.1.0",
 		"react": "17.0.2",
 		"react-dom": "17.0.2",
+		"react-native-swiper": "latest",
 		"react-query": "^3.34.16",
+		"react-scripts": "^3.0.1",
 		"react-toastify": "^8.2.0",
 		"tslib": "^2.3.1",
 		"web3": "^1.7.1",
@@ -38,6 +44,7 @@
 		"@types/node": "^17.0.21",
 		"@types/react": "^17.0.41",
 		"autoprefixer": "^10.4.2",
+		"babel-plugin-transform-remove-console": "^6.9.4",
 		"eslint": "8.9.0",
 		"eslint-config-next": "12.1.0",
 		"keccak256": "1.0.6",

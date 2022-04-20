@@ -15,7 +15,7 @@ const Footer: FC<FooterProps> = ({ className }) => {
 				target='_blank'
 				rel='noopener noreferrer'
 			>
-				❤️<span className="ml-2">by team CFF</span>
+				❤️<span className="ml-2">Stoners Club</span>
 			</a>
 		</footer>
 	);
