@@ -35,7 +35,7 @@ interface CustomButton {
   }
 
 const MintTokenForm: FC<MintTokenFormProps> = ({ onSubmit, freeAvailable, merkleProof }) => {
-	const MAX_PER_TXN = 11;
+	const MAX_PER_TXN = 10;
 	const [mintNum, setMints] = useState('1');
 	const [freeMints, setFreeMints] = useState('0');
 	const [error, setError] = useState<Error | null>(null);
