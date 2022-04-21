@@ -114,7 +114,9 @@ const MintToken: FC = () => {
 	const executeContractMethod = async(param: string, methodName: string, transactionOptions:object) => {
 		try {
 			let chainId = await ethereum.request({ method: 'net_version' });
-			if (chainId !== `${CHAIN_ID}`) {
+			var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+			console.log("isMobile ", isMobile);
+			if (!isMobile && chainId !== `${CHAIN_ID}`) {
 			alert(`Please change your network to "ETH MAINNET" in your wallet`);
 			return;
 			}
