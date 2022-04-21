@@ -27,8 +27,8 @@ const TopBar: FC<TopBarProps> = ({ className }) => {
 						{/* <TopLinks.TopLink href="/#faq" text="FAQ" /> */}
 					</div>
 					<div className="hidden md:flex items-center gap-8 xl:gap-16 text-xl">
-						<TopLinks.TopLinkImage href="https://twitter.com/cryptorun0" image="twitter_button" />
-						<TopLinks.TopLinkImage href="https://opensea.io" image="opensea" />
+						<TopLinks.TopLinkImage href="https://twitter.com/StonerBirdNFT" image="twitter_button" />
+						<TopLinks.TopLinkImage href="https://opensea.io/collection/stonermoonbird" image="opensea" />
 					</div>
 					<div className="hidden md:flex">
 						{/* <Wallet ens={address} userAddress={address} /> */}
