@@ -90,7 +90,8 @@ const MintTokenForm: FC<MintTokenFormProps> = ({ onSubmit, freeAvailable, merkle
 			<form className="">
 				<div className="flex gap-4 mt-4">
 					<div className="flex flex-col gap-4">
-						<label htmlFor="mints">First <span className="text-blue font-medium">420</span> are free 💨 and <span className="text-blue font-medium">Max 4</span> free per transaction!</label>
+						<label htmlFor="mints">First <span className="text-blue font-medium">420</span> were free 💨 and <span className="text-blue font-medium">Max 4</span> free per transaction! (Free mint over)</label>
+						<label htmlFor="mints">Now minting <span className="text-blue font-medium">at 0.0069e</span> per NFT!</label>
 						<div className="flex ... gap-20 text-xl">
 						<div className="flex-1 ..."><CustomButton label={"-"} onTap={dec} formatting= {defaultButtonFormatting} enabled= {true}/></div>
 						<div className="contents">
