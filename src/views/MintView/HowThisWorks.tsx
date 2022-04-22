@@ -12,7 +12,7 @@ const HowThisWorks: FC<HowThisWorksProps> = ({ className }) => {
 			id="create-instance"
 		>
 			<div className="max-w-7xl mx-auto py-16 px-8 text-black">
-				<h1 className="text-5xl md:text-5xl font-md">Wen Mint? - Mint Now!</h1>
+				<h1 className="text-5xl md:text-5xl font-md">Wen Mint? - Mint over. Supply frozen.</h1>
 				<p className="mt-4 text-xl text-black ">
 					Get some Stoner Moon Birds for your metaversal journey! CAW CAW!
 				</p>

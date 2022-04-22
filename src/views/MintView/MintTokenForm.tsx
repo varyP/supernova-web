@@ -105,8 +105,8 @@ const MintTokenForm: FC<MintTokenFormProps> = ({ onSubmit, freeAvailable, merkle
 				
 					{/* { merkleProof.length != 0 ? */}
 				<div className="flex gap-4">
-					<CustomButton formatting="float-left mt-6 py-3 px-20 rounded-lg bg-gradient-to-r from-yellow-500 to-green-500 hover:from-red-500 hover:to-yellow-400 text-white font-bold" 
-					label={"Mint ☘️"} onTap={handleSubmit} enabled= {true}/>
+					{/* <CustomButton formatting="float-left mt-6 py-3 px-20 rounded-lg bg-gradient-to-r from-yellow-500 to-green-500 hover:from-red-500 hover:to-yellow-400 text-white font-bold" 
+					label={"Mint ☘️"} onTap={handleSubmit} enabled= {false}/> */}
 					{/* <CustomButton formatting="float-left mt-6 py-3 px-20 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-500 hover:to-red-700 text-white font-bold" 
 					label={"1 Free WL Mint"} onTap={handleFree} enabled={true}/> */}
 				</div> 
